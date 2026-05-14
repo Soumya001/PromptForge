@@ -432,7 +432,7 @@ function buildFewShotExamples(input: string): string {
 }
 
 // Build context injection
-function buildContextInjection(input: string): string {
+function buildContextInjection(_input: string): string {
   return `\n[CONTEXT & CONSTRAINTS]\n- The user is looking for a high-quality, production-ready output\n- Consider modern best practices and industry standards\n- Tailor the response to be comprehensive yet concise\n- Assume the user has intermediate to advanced knowledge unless specified otherwise\n- Prioritize clarity, correctness, and practical applicability\n`;
 }
 
