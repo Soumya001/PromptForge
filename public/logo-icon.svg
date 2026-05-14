@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <!-- Hexagon background -->
+  <path d="M32 4L56 17.5V44.5L32 58L8 44.5V17.5L32 4Z" stroke="url(#logoGrad)" stroke-width="2.5" fill="none"/>
+  <!-- Hammer / Anvil shape -->
+  <path d="M20 36h24M24 36v-8l8-6 8 6v8M28 42h8v4h-8z" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Spark accent -->
+  <circle cx="44" cy="20" r="3" fill="url(#logoGrad)"/>
+  <path d="M44 14v2M44 24v2M38 20h2M48 20h2" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
