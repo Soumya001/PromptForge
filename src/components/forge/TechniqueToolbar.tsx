@@ -53,7 +53,6 @@ export default function TechniqueToolbar({
           {ALL_TECHNIQUES.map((technique, index) => {
             const config = TECHNIQUE_CONFIGS[technique];
             const isActive = selectedTechniques.includes(technique);
-            void autoMode;
 
             return (
               <motion.button

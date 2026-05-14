@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { ComponentType } from 'react'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
@@ -10,7 +10,7 @@ import {
   ArrowDownRight,
 } from 'lucide-react'
 
-const iconMap: Record<string, FC<{ className?: string }>> = {
+const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   Target,
   Zap,
   TrendingUp,
@@ -146,7 +146,7 @@ function MiniSparkline({
   )
 }
 
-const KPICard: FC<KPICardProps> = ({
+function KPICard({
   label,
   value,
   suffix,
@@ -156,7 +156,7 @@ const KPICard: FC<KPICardProps> = ({
   iconColor,
   sparklineData,
   index,
-}) => {
+}: KPICardProps) {
   const Icon = iconMap[icon] || Target
   const isPositive = trend >= 0
 

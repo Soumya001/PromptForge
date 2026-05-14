@@ -108,9 +108,13 @@ export default function Layout() {
 
           {/* Center: Search */}
           <div className="hidden md:flex items-center">
-            <div className="flex items-center gap-2 w-[280px] h-7 bg-[#16151D] border border-[#252430] rounded-lg px-3">
-              <Search className="w-4 h-4 text-[#6D6A80]" />
-              <span className="text-[#6D6A80] text-xs">Search...</span>
+            <div className="flex items-center gap-2 w-[280px] h-7 bg-[#16151D] border border-[#252430] rounded-lg px-3 focus-within:border-[#3A3852] transition-colors">
+              <Search className="w-4 h-4 text-[#6D6A80] flex-shrink-0" />
+              <input
+                type="text"
+                placeholder="Search..."
+                className="bg-transparent border-none outline-none text-[#F0EEF5] text-xs w-full placeholder:text-[#6D6A80]"
+              />
             </div>
           </div>
 

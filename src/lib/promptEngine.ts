@@ -584,7 +584,7 @@ export function generateDiff(
     }
 
     // Check if this line is part of the original task
-    if (trimmed.includes(original.trim().substring(0, 30))) {
+    if (original.trim() && trimmed.includes(original.trim().slice(0, 30))) {
       diff.push({ type: 'unchanged', text: section });
     } else if (
       trimmed.startsWith('#') ||

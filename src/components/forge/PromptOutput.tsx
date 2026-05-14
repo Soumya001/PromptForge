@@ -68,7 +68,7 @@ export default function PromptOutput({
       const trimmed = line.trim();
 
       // Section headers like [ROLE], [TASK], etc.
-      if (trimmed.match(/^\[ROLE\]|\[TASK\]|\[REASONING APPROACH\]|\[EXAMPLES\]|\[CONTEXT|OUTPUT FORMAT\]|\[SELF-OPTIMIZATION\]/)) {
+      if (trimmed.match(/^\[(ROLE|TASK|REASONING APPROACH|EXAMPLES|CONTEXT & CONSTRAINTS|OUTPUT FORMAT|SELF-OPTIMIZATION)\]/)) {
         return (
           <div key={i} className="border-l-2 border-[#8B5CF6] pl-3 my-2">
             <span className="text-[#A78BFA] font-bold text-[12px] uppercase tracking-wider">

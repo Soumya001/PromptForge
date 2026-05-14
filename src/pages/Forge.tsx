@@ -44,17 +44,7 @@ export default function Forge() {
 
   const handleHistorySelect = useCallback(
     (entry: HistoryEntry) => {
-      engine.setInput(entry.original);
-      // Reconstruct the result
-      engine.setResult({
-        enhancedPrompt: entry.enhanced,
-        appliedTechniques: entry.techniques,
-        qualityScore: entry.qualityScore,
-        tokenEstimate: Math.ceil(entry.enhanced.split(/\s+/).length * 1.3),
-        processingTime: 0,
-      });
-      engine.setStatus('complete');
-      engine.setActiveTab('output');
+      engine.restoreFromHistory(entry);
       setHistoryOpen(false);
     },
     [engine]
@@ -62,7 +52,7 @@ export default function Forge() {
 
   const handleTemplateSelect = useCallback(
     (_template: { techniques: string[] }) => {
-      // Optionally auto-enable techniques from template
+      void _template;
       toast.info('Template applied! Click Enhance to transform.');
     },
     []

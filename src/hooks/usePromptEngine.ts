@@ -18,15 +18,14 @@ export interface UsePromptEngineReturn {
 
   // Enhancement result
   result: EnhancementResult | null;
-  setResult: (result: EnhancementResult | null) => void;
 
   // Status
   status: ForgeStatus;
-  setStatus: (status: ForgeStatus) => void;
 
   // Actions
   enhance: () => void;
   clear: () => void;
+  restoreFromHistory: (entry: HistoryEntry) => void;
 
   // History
   history: HistoryEntry[];
@@ -43,7 +42,6 @@ export interface UsePromptEngineReturn {
 
   // Active tab for mobile
   activeTab: 'input' | 'output';
-  setActiveTab: (tab: 'input' | 'output') => void;
 }
 
 const HISTORY_KEY = 'forge-history';
@@ -108,7 +106,7 @@ export function usePromptEngine(): UsePromptEngineReturn {
 
         // Add to history
         const entry: HistoryEntry = {
-          id: Date.now().toString(36) + Math.random().toString(36).substr(2),
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2),
           original: input,
           enhanced: enhancementResult.enhancedPrompt,
           techniques: enhancementResult.appliedTechniques,
@@ -121,6 +119,20 @@ export function usePromptEngine(): UsePromptEngineReturn {
       }
     }, delay);
   }, [input, selectedTechniques, autoMode, addToHistory]);
+
+  const restoreFromHistory = useCallback((entry: HistoryEntry) => {
+    setInput(entry.original);
+    setResult({
+      enhancedPrompt: entry.enhanced,
+      appliedTechniques: entry.techniques,
+      qualityScore: entry.qualityScore,
+      tokenEstimate: Math.ceil(entry.enhanced.split(/\s+/).length * 1.3),
+      processingTime: 0,
+    });
+    setStatus('complete');
+    setFeedbackGiven(false);
+    setActiveTab('output');
+  }, []);
 
   const clear = useCallback(() => {
     setInput('');
@@ -143,11 +155,10 @@ export function usePromptEngine(): UsePromptEngineReturn {
     autoMode,
     setAutoMode,
     result,
-    setResult,
     status,
-    setStatus,
     enhance,
     clear,
+    restoreFromHistory,
     history,
     addToHistory,
     clearHistory,
@@ -156,6 +167,5 @@ export function usePromptEngine(): UsePromptEngineReturn {
     copied,
     setCopied,
     activeTab,
-    setActiveTab,
   };
 }
