@@ -42,7 +42,6 @@ export interface UsePromptEngineReturn {
 
   // Active tab for mobile
   activeTab: 'input' | 'output';
-  setActiveTab: (tab: 'input' | 'output') => void;
 }
 
 const HISTORY_KEY = 'forge-history';
@@ -168,6 +167,5 @@ export function usePromptEngine(): UsePromptEngineReturn {
     copied,
     setCopied,
     activeTab,
-    setActiveTab,
   };
 }
